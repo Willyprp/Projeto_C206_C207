@@ -3,24 +3,15 @@ package br.inatel.projeto;
 import br.inatel.projeto.Jogador;
 
 public abstract class Personagem {
-    private Jogador jogador;
     private String nome;
     private String rota;
-    //private String classe;
     //private Item[6] itens;
     private int vida;
     private int mana;
-    private int dano_ataque;
+    private int danoAtaque;
     private int armadura;
-    private int resistencia_magica;
+    private int resistenciaMagica;
 
-    public Jogador getJogador() {
-        return jogador;
-    }
-
-    public void setJogador(Jogador jogador) {
-        this.jogador = jogador;
-    }
 
     public String getNome() {
         return nome;
@@ -54,12 +45,12 @@ public abstract class Personagem {
         this.mana = mana;
     }
 
-    public int getDano_ataque() {
-        return dano_ataque;
+    public int getDanoAtaque() {
+        return danoAtaque;
     }
 
-    public void setDano_ataque(int dano_ataque) {
-        this.dano_ataque = dano_ataque;
+    public void setDanoAtaque(int danoAtaque) {
+        this.danoAtaque = danoAtaque;
     }
 
     public int getArmadura() {
@@ -70,11 +61,11 @@ public abstract class Personagem {
         this.armadura = armadura;
     }
 
-    public int getResistencia_magica() {
-        return resistencia_magica;
+    public int getResistenciaMagica() {
+        return resistenciaMagica;
     }
 
-    public void setResistencia_magica(int resistencia_magica) {
-        this.resistencia_magica = resistencia_magica;
+    public void setResistenciaMagica(int resistenciaMagica) {
+        this.resistenciaMagica = resistenciaMagica;
     }
 }
