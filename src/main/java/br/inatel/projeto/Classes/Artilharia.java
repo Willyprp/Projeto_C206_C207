@@ -6,4 +6,9 @@ public class Artilharia  extends Personagem implements Mago{
     public void mago() {
         System.out.println("Causa dano usando suas magias de uma longa distância");
     }
+
+    @Override
+    public void info() {
+        mago();
+    }
 }

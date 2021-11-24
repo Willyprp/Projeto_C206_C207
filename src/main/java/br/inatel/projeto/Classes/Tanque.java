@@ -2,7 +2,8 @@ package br.inatel.projeto.Classes;
 import br.inatel.projeto.Personagem;
 
 public class Tanque  extends Personagem{
-    private void aguentar(){
+    @Override
+    public void info() {
         System.out.println("Aguenta muita porrada");
     }
 }

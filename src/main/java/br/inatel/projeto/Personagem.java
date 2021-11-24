@@ -12,7 +12,7 @@ public abstract class Personagem {
     private int armadura;
     private int resistenciaMagica;
 
-
+    public abstract void info();
     public String getNome() {
         return nome;
     }

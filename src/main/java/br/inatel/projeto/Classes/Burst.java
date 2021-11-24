@@ -7,4 +7,9 @@ public class Burst  extends Personagem implements Mago{
     public void mago() {
         System.out.println("Causa muito dano com uma rotação de suas habilidades");
     }
+
+    @Override
+    public void info() {
+        mago();
+    }
 }

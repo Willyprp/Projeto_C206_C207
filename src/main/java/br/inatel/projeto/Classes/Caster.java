@@ -8,4 +8,9 @@ public class Caster extends Personagem implements Atirador {
     public void atirador() {
         System.out.println("Causa dano utilizando uma combinação de ataques com habilidades");
     }
+
+    @Override
+    public void info() {
+        atirador();
+    }
 }

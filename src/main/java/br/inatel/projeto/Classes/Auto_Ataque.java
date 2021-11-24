@@ -8,4 +8,9 @@ public class Auto_Ataque extends Personagem implements Atirador{
     public void atirador() {
         System.out.println("Causa muito dano utilizando seus ataques básicos");
     }
+
+    @Override
+    public void info() {
+        atirador();
+    }
 }
