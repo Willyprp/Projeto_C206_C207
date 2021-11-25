@@ -8,6 +8,7 @@ public class Principal {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        DataBase database = new DataBase();
         int escolha;
         boolean flag = true;
         boolean cadastrado = false;
@@ -29,7 +30,8 @@ public class Principal {
                     System.out.println("Entre com seu telefone:");
                     String telefone = sc.nextLine();
                     Jogador jogador = new Jogador(nome,email,telefone);
-                    cadastrado = true;
+                    database.connect();
+                    cadastrado = database.insertJogador(jogador);
                     break;
                 case 2:
                     if(cadastrado){
