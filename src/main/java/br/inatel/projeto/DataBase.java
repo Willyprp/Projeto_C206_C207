@@ -1,5 +1,9 @@
 package br.inatel.projeto;
 
+import br.inatel.projeto.Classes.Artilharia;
+import br.inatel.projeto.Classes.Atirador;
+import br.inatel.projeto.Classes.Auto_Ataque;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -49,7 +53,7 @@ public class DataBase {
         return check;
     }
     // ----------------------------BUSCANDO TODOS REGISTROS----------------------------
-    public ArrayList<Jogador> researchUser(){
+    public ArrayList<Jogador> researchJogador(){
         connect();
         ArrayList<Jogador> jogadores = new ArrayList<>();
         String sql = "SELECT * FROM Jogador";
@@ -130,5 +134,37 @@ public class DataBase {
             }
         }
         return check;
+    }
+
+    // ----------------------------BUSCANDO TODOS REGISTROS----------------------------
+    public ArrayList<Personagem> researchPersonagem(int classe, int rota){
+        connect();
+        ArrayList<Personagem> personagens = new ArrayList<>();
+        if(classe == 3 && rota == 4) {
+            String sql = "SELECT p.nome FROM Classe as c, Rota as r, Personagem as p WHERE c.nome = 'auto_ataque' AND r.nome = 'atirador'";
+
+            try {
+                statement = connection.createStatement();
+                result = statement.executeQuery(sql);
+                while (result.next()) {
+                    Personagem atiradorTemp = new Auto_Ataque(result.getString("nome"));
+                    atiradorTemp.setNome(result.getString("nome"));
+                    System.out.println("Nome = " + atiradorTemp.getNome());
+                    System.out.println("------------------------------");
+                    personagens.add(atiradorTemp);
+                }
+            } catch (SQLException e) {
+                System.out.println("Erro de operação: " + e.getMessage());
+            } finally {
+                try {
+                    connection.close();
+                    statement.close();
+                    result.close();
+                } catch (SQLException e) {
+                    System.out.println("Erro ao fechar a conexão: " + e.getMessage());
+                }
+            }
+        }
+            return personagens;
     }
 }

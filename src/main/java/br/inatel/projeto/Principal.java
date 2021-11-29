@@ -11,7 +11,7 @@ public class Principal {
         DataBase database = new DataBase();
         int escolha;
         boolean flag = true;
-        boolean cadastrado = false;
+        boolean cadastrado = true;
         while(flag){
             System.out.println("Bem vindo!");
             System.out.println("O que deseja fazer?");
@@ -53,6 +53,8 @@ public class Principal {
                         System.out.println("6 - Encantador");
                         System.out.println("7 - Tanque");
                         classe = sc.nextInt();
+                        database.researchPersonagem(classe,rota);
+                        break;
                         // Puxar do banco e fazer o switch do personagem q ira querer jogar
                     }
                     else{
@@ -72,16 +74,16 @@ public class Principal {
                     explicacao = sc.nextInt();
                     switch (explicacao){ // Trocar por while
                         case 1:
-                            Artilharia artilharia = new Artilharia();
-                            artilharia.info();
+                            //Artilharia artilharia = new Artilharia();
+                            //artilharia.info();
                             break;
                         case 2:
                             Assassino assassino = new Assassino();
                             assassino.info();
                             break;
                         case 3:
-                            Auto_Ataque auto = new Auto_Ataque();
-                            auto.info();
+                            //Auto_Ataque auto = new Auto_Ataque();
+                            //auto.info();
                             break;
                         case 4:
                             Burst burst = new Burst();
@@ -103,6 +105,7 @@ public class Principal {
                             break;
                         default:
                             System.out.println("Valor Inválido.");
+                    break;
                     }
                 case 4:
                     System.out.println("Obrigado pela participação!");
