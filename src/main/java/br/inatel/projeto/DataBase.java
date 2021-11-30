@@ -137,18 +137,17 @@ public class DataBase {
     }
 
     // ----------------------------BUSCANDO TODOS REGISTROS----------------------------
-    public ArrayList<Personagem> researchPersonagem(int classe, int rota){
+    public ArrayList<Personagem> researchPersonagem(String classe, String rota){
         connect();
         ArrayList<Personagem> personagens = new ArrayList<>();
-        if(classe == 3 && rota == 4) {
-            String sql = "SELECT p.nome FROM Classe as c, Rota as r, Personagem as p WHERE c.nome = 'auto_ataque' AND r.nome = 'atirador'";
+        String sql = "SELECT distinct c.personagem_nome, p.personagem_nome FROM Classe as c, personagem_has_rota as p WHERE c.nome = '"+classe+"' AND p.rota_nome = '"+rota+"' and p.Personagem_nome = c.personagem_nome";
 
             try {
                 statement = connection.createStatement();
                 result = statement.executeQuery(sql);
                 while (result.next()) {
-                    Personagem atiradorTemp = new Auto_Ataque(result.getString("nome"));
-                    atiradorTemp.setNome(result.getString("nome"));
+                    Personagem atiradorTemp = new Auto_Ataque(result.getString("personagem_nome"));
+                    atiradorTemp.setNome(result.getString("personagem_nome"));
                     System.out.println("Nome = " + atiradorTemp.getNome());
                     System.out.println("------------------------------");
                     personagens.add(atiradorTemp);
@@ -164,7 +163,6 @@ public class DataBase {
                     System.out.println("Erro ao fechar a conexão: " + e.getMessage());
                 }
             }
-        }
             return personagens;
     }
 }

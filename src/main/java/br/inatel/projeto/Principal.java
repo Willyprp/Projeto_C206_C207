@@ -37,6 +37,8 @@ public class Principal {
                     if(cadastrado){
                         int rota;
                         int classe;
+                        String classebd = "";
+                        String rotabd = "";
                         System.out.println("Escolha sua rota:");
                         System.out.println("1 - Topo");
                         System.out.println("2 - Caçador");
@@ -44,6 +46,26 @@ public class Principal {
                         System.out.println("4 - Atirador");
                         System.out.println("5 - Suporte");
                         rota = sc.nextInt();
+                        switch (rota){
+                            case 1:
+                                rotabd = "topo";
+                                break;
+                            case 2:
+                                rotabd = "cacador";
+                                break;
+                            case 3:
+                                rotabd = "meio";
+                                break;
+                            case 4:
+                                rotabd = "atirador";
+                                break;
+                            case 5:
+                                rotabd = "suporte";
+                                break;
+                            default:
+                                System.out.println("Valor inválido");
+                            break;
+                        }
                         System.out.println("Escolha sua classe");
                         System.out.println("1 - Artilharia");
                         System.out.println("2 - Assassino");
@@ -53,9 +75,34 @@ public class Principal {
                         System.out.println("6 - Encantador");
                         System.out.println("7 - Tanque");
                         classe = sc.nextInt();
-                        database.researchPersonagem(classe,rota);
+                        switch(classe){
+                            case 1:
+                                classebd = "artilharia";
+                                break;
+                            case 2:
+                                classebd = "assassino";
+                                break;
+                            case 3:
+                                classebd = "auto_ataque";
+                                break;
+                            case 4:
+                                classebd = "burst";
+                                break;
+                            case 5:
+                                classebd = "caster";
+                                break;
+                            case 6:
+                                classebd = "encantador";
+                                break;
+                            case 7:
+                                classebd = "tanque";
+                                break;
+                            default:
+                                System.out.println("Valor inválido");
+                                break;
+                        }
+                        database.researchPersonagem(classebd,rotabd);
                         break;
-                        // Puxar do banco e fazer o switch do personagem q ira querer jogar
                     }
                     else{
                         System.out.println("Realize o cadastro antes de prosseguir!");
