@@ -5,15 +5,22 @@ import br.inatel.projeto.Jogador;
 public abstract class Personagem {
     private String nome;
     private String rota;
-
-    //private Item[6] itens;
     private int vida;
     private int mana;
     private int danoAtaque;
     private int armadura;
     private int resistenciaMagica;
 
-    public Personagem(String nome) {
+    public Personagem(String nome, int vida, int mana, int danoAtaque, int armadura, int resistenciaMagica) {
+        this.nome = nome;
+        this.vida = vida;
+        this.mana = mana;
+        this.danoAtaque = danoAtaque;
+        this.armadura = armadura;
+        this.resistenciaMagica = resistenciaMagica;
+    }
+
+    public Personagem(String nome){
         this.nome = nome;
     }
 

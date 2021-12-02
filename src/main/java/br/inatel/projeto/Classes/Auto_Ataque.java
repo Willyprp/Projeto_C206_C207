@@ -4,7 +4,10 @@ import br.inatel.projeto.Personagem;
 
 public class Auto_Ataque extends Personagem implements Atirador{
 
-    public Auto_Ataque(String nome) {
+    public Auto_Ataque(String nome, int vida, int mana, int danoAtaque, int armadura, int resistenciaMagica) {
+        super(nome, vida, mana, danoAtaque, armadura, resistenciaMagica);
+    }
+    public Auto_Ataque(String nome){
         super(nome);
     }
 

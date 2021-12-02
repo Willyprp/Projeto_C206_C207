@@ -11,13 +11,13 @@ public class Principal {
         DataBase database = new DataBase();
         int escolha;
         boolean flag = true;
-        boolean cadastrado = true;
+        boolean cadastrado = false;
+        System.out.println("Bem vindo!");
         while(flag){
-            System.out.println("Bem vindo!");
             System.out.println("O que deseja fazer?");
             System.out.println("1 - Cadastro jogador:");
-            System.out.println("2 - Seleção de personagem:");
-            System.out.println("3 - Explicação das classes:");
+            System.out.println("2 - Busca de personagem:");
+            System.out.println("3 - Seleção de personagem:");
             System.out.println("4 - Sair");
             escolha = sc.nextInt();
             switch (escolha){
@@ -33,6 +33,7 @@ public class Principal {
                     database.connect();
                     cadastrado = database.insertJogador(jogador);
                     break;
+
                 case 2:
                     if(cadastrado){
                         int rota;
@@ -51,7 +52,7 @@ public class Principal {
                                 rotabd = "topo";
                                 break;
                             case 2:
-                                rotabd = "cacador";
+                                rotabd = "selva";
                                 break;
                             case 3:
                                 rotabd = "meio";
@@ -109,51 +110,25 @@ public class Principal {
                         break;
                     }
                 case 3:
-                    int explicacao;
-                    System.out.println("1 - Artilharia");
-                    System.out.println("2 - Assassino");
-                    System.out.println("3 - Auto Ataque");
-                    System.out.println("4 - Burst");
-                    System.out.println("5 - Caster");
-                    System.out.println("6 - Encantador");
-                    System.out.println("7 - Tanque");
-                    System.out.println("8 - Sair");
-                    explicacao = sc.nextInt();
-                    switch (explicacao){ // Trocar por while
-                        case 1:
-                            //Artilharia artilharia = new Artilharia();
-                            //artilharia.info();
-                            break;
-                        case 2:
-                            Assassino assassino = new Assassino();
-                            assassino.info();
-                            break;
-                        case 3:
-                            //Auto_Ataque auto = new Auto_Ataque();
-                            //auto.info();
-                            break;
-                        case 4:
-                            Burst burst = new Burst();
-                            burst.info();
-                            break;
-                        case 5:
-                            Caster caster = new Caster();
-                            caster.info();
-                            break;
-                        case 6:
-                            Encantador encantador = new Encantador();
-                            encantador.info();
-                            break;
-                        case 7:
-                            Tanque tanque = new Tanque();
-                            tanque.info();
-                            break;
-                        case 8:
-                            break;
-                        default:
-                            System.out.println("Valor Inválido.");
-                    break;
+                    if(cadastrado) {
+                        String pNome;
+                        String jogar;
+                        sc.nextLine();
+                        System.out.println("Entre com o nome do personagem desejado: ");
+                        pNome = sc.nextLine();
+                        database.escolhaPersonagem(pNome);
+                        System.out.println("Deseja jogar com este personagem? (S/N)");
+                        jogar = sc.nextLine();
+                        if (jogar.equals("S")) {
+                            database.updateJogador(pNome);
+                        }
+                        break;
                     }
+                    else{
+                        System.out.println("Realize o cadastro antes de prosseguir!");
+                        break;
+                    }
+
                 case 4:
                     System.out.println("Obrigado pela participação!");
                     flag = false;
