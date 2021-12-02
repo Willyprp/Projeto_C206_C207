@@ -14,11 +14,13 @@ public class Principal {
         boolean cadastrado = false;
         System.out.println("Bem vindo!");
         while(flag){
+            System.out.println();
             System.out.println("O que deseja fazer?");
             System.out.println("1 - Cadastro jogador:");
             System.out.println("2 - Busca de personagem:");
             System.out.println("3 - Seleção de personagem:");
-            System.out.println("4 - Sair");
+            System.out.println("4 - Informações sobre as classes:");
+            System.out.println("5 - Sair");
             escolha = sc.nextInt();
             switch (escolha){
                 case 1:
@@ -130,6 +132,58 @@ public class Principal {
                     }
 
                 case 4:
+                    int explicacao;
+                    System.out.println("1 - Artilharia");
+                    System.out.println("2 - Assassino");
+                    System.out.println("3 - Auto Ataque");
+                    System.out.println("4 - Burst");
+                    System.out.println("5 - Caster");
+                    System.out.println("6 - Encantador");
+                    System.out.println("7 - Tanque");
+                    System.out.println("8 - Sair");
+                    explicacao = sc.nextInt();
+                    switch (explicacao){
+                        case 1:
+                            Artilharia artilharia = new Artilharia();
+                            artilharia.info();
+                            artilharia.mago();
+                            break;
+                        case 2:
+                            Assassino assassino = new Assassino();
+                            assassino.info();
+                            break;
+                        case 3:
+                            Auto_Ataque auto = new Auto_Ataque();
+                            auto.info();
+                            auto.atirador();
+                            break;
+                        case 4:
+                            Burst burst = new Burst();
+                            burst.info();
+                            burst.mago();
+                            break;
+                        case 5:
+                            Caster caster = new Caster();
+                            caster.info();
+                            caster.atirador();
+                            break;
+                        case 6:
+                            Encantador encantador = new Encantador();
+                            encantador.info();
+                            break;
+                        case 7:
+                            Tanque tanque = new Tanque();
+                            tanque.info();
+                            break;
+                        case 8:
+                            break;
+                        default:
+                            System.out.println("Valor Inválido.");
+                            break;
+                    }
+                    break;
+
+                case 5:
                     System.out.println("Obrigado pela participação!");
                     flag = false;
                     break;

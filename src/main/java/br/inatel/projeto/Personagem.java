@@ -28,6 +28,7 @@ public abstract class Personagem {
     }
 
     public abstract void info();
+
     public String getNome() {
         return nome;
     }

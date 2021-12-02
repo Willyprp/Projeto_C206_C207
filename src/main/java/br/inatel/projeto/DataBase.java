@@ -52,90 +52,7 @@ public class DataBase {
         }
         return check;
     }
-    // ----------------------------BUSCANDO TODOS REGISTROS----------------------------
-    public ArrayList<Jogador> researchJogador(){
-        connect();
-        ArrayList<Jogador> jogadores = new ArrayList<>();
-        String sql = "SELECT * FROM Jogador";
-        try{
-            statement = connection.createStatement();
-            result = statement.executeQuery(sql);
-            while(result.next()){
-                Jogador jogadorTemp = new Jogador(result.getString("nome"), result.getString("email"), result.getString("telefone"));
-                jogadorTemp.setNome(result.getString("nome"));
-                System.out.println("Nome = " + jogadorTemp.getNome());
-                System.out.println("Email = " + jogadorTemp.getEmail());
-                System.out.println("Telefone = " + jogadorTemp.getTelefone());
-                System.out.println("------------------------------");
-                jogadores.add(jogadorTemp);
-            }
-        }catch (SQLException e){
-            System.out.println("Erro de operação: " + e.getMessage());
-        }finally {
-            try {
-                connection.close();
-                statement.close();
-                result.close();
-            }catch (SQLException e){
-                System.out.println("Erro ao fechar a conexão: " + e.getMessage());
-            }
-        }
-        return jogadores;
-    }
-    // ----------------------------BUSCANDO REGISTRO PELO EMAIL----------------------------
-    public ArrayList<Jogador> researchUserEmail(String email){
-        connect();
-        ArrayList<Jogador> jogadores = new ArrayList<>();
-        String sql = "SELECT * FROM Jogador WHERE email = '" + email + "'";
-        try{
-            statement = connection.createStatement();
-            result = statement.executeQuery(sql);
-            while(result.next()){
-                Jogador jogadorTemp = new Jogador(result.getString("nome"), result.getString("email"),  result.getString("telefone"));
-                jogadorTemp.setNome(result.getString("nome"));
-                System.out.println("Nome = " + jogadorTemp.getNome());
-                System.out.println("Email = " + jogadorTemp.getEmail());
-                System.out.println("Telefone = " + jogadorTemp.getTelefone());
-                System.out.println("------------------------------");
-                jogadores.add(jogadorTemp);
-            }
-        }catch (SQLException e){
-            System.out.println("Erro de operação: " + e.getMessage());
-        }finally {
-            try {
-                connection.close();
-                statement.close();
-                result.close();
-            }catch (SQLException e){
-                System.out.println("Erro ao fechar a conexão: " + e.getMessage());
-            }
-        }
-        return jogadores;
-    }
-
-    // ----------------------------EXCLUINDO REGISTRO----------------------------
-    public boolean deleteJogador(String email) {
-        connect();
-        String sql = "DELETE FROM jogador WHERE email=?";
-        try{
-            pst = connection.prepareStatement(sql);
-            pst.setString(1, email);
-            pst.execute();
-            check = true;
-        }catch (SQLException e){
-            System.out.println("Erro de operação: " + e.getMessage());
-            check = false;
-        }finally {
-            try {
-                connection.close();
-                pst.close();
-            }catch (SQLException e){
-                System.out.println("Erro ao fechar a conexão: " + e.getMessage());
-            }
-        }
-        return check;
-    }
-
+    
     // ----------------------------BUSCANDO PERSONAGENS PELA ROTA/CLASSE------------------------------
     public ArrayList<Personagem> researchPersonagem(String classe, String rota){
         connect();
@@ -165,7 +82,7 @@ public class DataBase {
             }
             return personagens;
     }
-
+    // ----------------------------SELECIONANDO PERSONAGEM NO REGISTRO----------------------------
     public ArrayList<Personagem> escolhaPersonagem(String pNome){
         connect();
         ArrayList<Personagem> personagens = new ArrayList<>();

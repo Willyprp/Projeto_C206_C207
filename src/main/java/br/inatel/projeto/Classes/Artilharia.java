@@ -9,10 +9,14 @@ public class Artilharia extends Personagem implements Mago{
     @Override
     public void mago() {
         System.out.println("Causa dano usando suas magias de uma longa distância");
+        System.out.println("Necessita de itens de poder de habilidade para que suas habilidades causem dano");
     }
 
     @Override
     public void info() {
-        mago();
+        System.out.println("O alcance das habilidades são maiores do que 700 unidades");
+    }
+
+    public Artilharia(){
     }
 }

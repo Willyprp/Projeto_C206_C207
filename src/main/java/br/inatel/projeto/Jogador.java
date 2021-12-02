@@ -4,7 +4,6 @@ public class Jogador {
     private String nome;
     private String email;
     private String telefone;
-    private Personagem personagem;
 
     public Jogador(String nome, String email, String telefone) {
         this.nome = nome;
@@ -36,11 +35,4 @@ public class Jogador {
         this.telefone = telefone;
     }
 
-    public Personagem getPersonagem() {
-        return personagem;
-    }
-
-    public void setPersonagem(Personagem personagem) {
-        this.personagem = personagem;
-    }
 }
